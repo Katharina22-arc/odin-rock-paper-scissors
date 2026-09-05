@@ -1,0 +1,22 @@
+{
+  "name": "odin-rock-paper-scissors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Katharina22-arc/odin-rock-paper-scissors.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Katharina22-arc/odin-rock-paper-scissors/issues"
+  },
+  "homepage": "https://github.com/Katharina22-arc/odin-rock-paper-scissors#readme"
+}

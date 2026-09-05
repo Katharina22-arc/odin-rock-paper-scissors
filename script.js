@@ -1,49 +1,92 @@
-console.log("Hey");
-
 let rock = "rock";
 let paper = "paper";
 let scissors = "scissors";
 
-const humanScore = 0;
-const computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
-function getRandomInt(max){
+let continueGame = true;
+
+
+function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function getComputerChoice(){
-    const computerNumb = getRandomInt(3);
-    
-
-    if (computerNumb === 0) {
-        console.log(rock);
+function getComputerChoice() {
+    const computerSelection = getRandomInt(3);
+    if (computerSelection === 0) {
+        console.log("Computer selects: " + rock);
+        return rock;
     }
-    else if (computerNumb === 1) {
-        console.log(paper); 
+    else if (computerSelection === 1) {
+        console.log("Computer selects: " + paper); 
+        return paper;
     }
     else {
-        console.log(scissors);
+        console.log("Computer selects: " + scissors);
+        return scissors;
     }
 }
 
 
-function getUserChoice(){
-    const userNumb = prompt("Pick a number between 0 and 2. 0 = rock, 1 = paper, 2 = scissors");
-
-    if (userNumb === 0) {
-        console.log(rock);
+function getHumanChoice() {
+    let humanSelection;
+    while (true) {
+        humanSelection = Number(prompt("Pick a number between 0 and 2." + '\n' + "0 = rock, 1 = paper, 2 = scissors"));
+        if (humanSelection === 0 || humanSelection === 1 || humanSelection === 2) {
+            break;
+        } else {
+            console.log("Invalid input. Try again");
+        }
     }
-    else if (userNumb === 1) {
-        console.log(paper); 
+    if (humanSelection === 0) {
+        console.log("You select: " + rock);
+        return rock;
+    }
+    else if (humanSelection === 1) {
+        console.log("You select: " + paper); 
+        return paper;
     }
     else {
-        console.log(scissors);
+        console.log("You select: " + scissors);
+        return scissors;
     }
 }
 
-getComputerChoice()
-getUserChoice()
+function playRound(humanSelection, computerSelection) {
+    if  ((humanSelection === rock && computerSelection === scissors) || 
+        (humanSelection === paper && computerSelection === rock) || 
+        (humanSelection === scissors && computerSelection === paper)) {
+            console.log("You win!");
+            humanScore = humanScore + 1; 
+        } else if (humanSelection === computerSelection) {
+            console.log("It's a draw!");
+        } else {
+            console.log("You loose!");
+            computerScore = computerScore + 1; 
+        }
+        console.log("Human score: " + humanScore + '\n' + "Computer score: " + computerScore);
+    }
 
+function gameActive() {
+    while (continueGame === true) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+
+        userDecision = prompt("Do you want to continue the game? Y/N").toLowerCase();
+        if (userDecision === "y") {
+                continueGame = true
+            } else if (userDecision = "n") {
+                continueGame = false;
+                break;
+            } else {
+                console.log("Invalid input. Try again")
+            }
+    }
+}
+
+gameActive(); 
 /*
 Score:
     For each round the user plays the computer keeps the score
@@ -63,3 +106,4 @@ function playRound(humanScore, ComputerScore){}:
     IF user answers with y start a new game
     ELSE stop game
 */
+ 
